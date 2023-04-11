@@ -13,13 +13,13 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
- export_game:
+   export_game:
    runs-on: ubuntu-latest
     # Add permission for release creation. Can be made narrower according to your needs
     permissions: write-all
     # Job name, can be anything
     - name: ExporT
-   steps:
+    steps:
       # Always include the checkout step so that 
       # your project is available for Godot to export
     - name: checkout
