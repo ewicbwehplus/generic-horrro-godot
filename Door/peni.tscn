@@ -1,0 +1,123 @@
+[gd_scene load_steps=13 format=3 uid="uid://cbtjpk7rfbqt8"]
+
+[ext_resource type="Script" path="res://Door/penis.gd" id="1_cjve3"]
+[ext_resource type="Shader" path="res://bean.gdshader" id="2_5t3k8"]
+[ext_resource type="AudioStream" uid="uid://cpr8ngamcykc3" path="res://Door/handle_open_sound.ogg" id="2_6w0vs"]
+
+[sub_resource type="BoxShape3D" id="9"]
+size = Vector3(2.0005, 4.04962, 0.0689802)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_up404"]
+render_priority = 0
+shader = ExtResource("2_5t3k8")
+shader_parameter/jitter = 0.5
+shader_parameter/jitter_z_coordinate = true
+shader_parameter/jitter_depth_independent = true
+shader_parameter/affine_texture_mapping = true
+shader_parameter/alpha_scissor = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fsm8y"]
+material = SubResource("ShaderMaterial_up404")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e5jgt"]
+render_priority = 1
+shader = ExtResource("2_5t3k8")
+shader_parameter/jitter = 0.877
+shader_parameter/jitter_z_coordinate = true
+shader_parameter/jitter_depth_independent = true
+shader_parameter/affine_texture_mapping = true
+shader_parameter/alpha_scissor = 0.237
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_leyf8"]
+material = SubResource("ShaderMaterial_e5jgt")
+
+[sub_resource type="CylinderShape3D" id="14"]
+height = 4.29681
+radius = 2.36186
+
+[sub_resource type="Animation" id="15"]
+resource_name = "DoorClose"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="12"]
+resource_name = "DoorOpen"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pqssh"]
+_data = {
+"DoorClose": SubResource("15"),
+"DoorOpen": SubResource("12")
+}
+
+[node name="Peni" type="Node3D"]
+script = ExtResource("1_cjve3")
+
+[node name="StaticBody" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00194, 2.04937, -0.106581)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="StaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00194, 0.00178766, 0.0355022)
+shape = SubResource("9")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody"]
+transform = Transform3D(0.867017, 0.270305, 0.41859, 0.395614, 0.13731, -0.908095, -0.302939, 0.952933, 0.012114, 0, -0.541204, 0)
+mesh = SubResource("CapsuleMesh_fsm8y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody/MeshInstance3D2"]
+transform = Transform3D(0.867016, 0.395613, -0.302939, 0.270305, 0.13731, 0.952933, 0.41859, -0.908094, 0.0121136, 0.214108, 0.0743128, -0.491464)
+mesh = SubResource("CapsuleMesh_leyf8")
+skeleton = NodePath("../..")
+
+[node name="Area" type="Area3D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16266, 0)
+shape = SubResource("14")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pqssh")
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27651, 0)
+stream = ExtResource("2_6w0vs")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 75.0
+offset_top = 322.0
+offset_right = 784.0
+offset_bottom = 348.0
+scale = Vector2(0.609391, 1.0241)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Would you mind if you help me to find my stuff in that totally not sus building? Thanks??????"
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="Area" to="." method="_on_Area_body_exited"]

@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://b60aoh28h1ch0"]
+
+[ext_resource type="Script" path="res://tv.gd" id="1_j2hia"]
+[ext_resource type="Shader" path="res://shaders/TV.gdshader" id="2_bgfc5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tbudn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mljpd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_05as2"]
+resource_local_to_scene = true
+line_spacing = 3.711
+font_size = 27
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w37oo"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yspms"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_w37oo")
+
+[sub_resource type="QuadMesh" id="QuadMesh_c53ro"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_yspms")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nh56i"]
+shader = ExtResource("2_bgfc5")
+shader_parameter/vertJerkOpt = 0.302
+shader_parameter/vertMovementOpt = 0.167
+shader_parameter/bottomStaticOpt = 0.242
+shader_parameter/bottomStaticStrenth = 0.162
+shader_parameter/scalinesOpt = 0.67
+shader_parameter/rgbOffsetOpt = 0.147
+shader_parameter/horzFuzzOpt = 0.32
+
+[node name="TV" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_tbudn")
+script = ExtResource("1_j2hia")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.443071, -0.699645, 0.560522, 0, 0.625243, 0.78043, -0.896486, -0.345786, 0.277027, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_mljpd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 212.0
+offset_top = 154.0
+offset_right = 788.0
+offset_bottom = 314.0
+scale = Vector2(0.33479, 0.75184)
+text = "Ending 1/2.
+You decided to investigate 
+the blood mark at the bathroom. Your body 
+was never been found since."
+label_settings = SubResource("LabelSettings_05as2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(640, 480)
+size_2d_override = Vector2i(640, 480)
+size_2d_override_stretch = true
+render_target_clear_mode = 1
+render_target_update_mode = 4
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SubViewport"]
+clip_contents = true
+custom_minimum_size = Vector2(640, 480)
+size_flags_horizontal = 4
+auto_translate = false
+localize_numeral_system = false
+stretch = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.29513e-08, 0, 0.753838, 0, 0.753838, 0, -0.753838, 0, -3.29513e-08, 0.640424, -0.00862977, 0.0126399)
+mesh = SubResource("QuadMesh_c53ro")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.52293, 0.0721792, 0.0209585)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_nh56i")
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(16.3191, 12.7626)
+color = Color(1, 1, 1, 0)

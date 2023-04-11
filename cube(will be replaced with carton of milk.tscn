@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bljeadav8o2gk"]
+
+[ext_resource type="ArrayMesh" uid="uid://kc8anepwkfrn" path="res://uploads_files_3494595_Milk_Carton_Packet_Container.obj" id="1_87l36"]
+[ext_resource type="Script" path="res://MeshInstance3D.gd" id="1_v705o"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78746, -0.493956, -0.314272)
+mesh = ExtResource("1_87l36")
+script = ExtResource("1_v705o")

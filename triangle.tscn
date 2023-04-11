@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bs32wtmqr61p4"]
+
+[ext_resource type="Texture2D" uid="uid://6f2tcylu6ekw" path="res://addons/kenney_prototype_textures/orange/texture_09.png" id="2_7ev0u"]
+[ext_resource type="Shader" path="res://bean.gdshader" id="2_kbyk7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20er4"]
+render_priority = 0
+shader = ExtResource("2_kbyk7")
+shader_parameter/jitter = 0.924
+shader_parameter/jitter_z_coordinate = true
+shader_parameter/jitter_depth_independent = true
+shader_parameter/affine_texture_mapping = true
+shader_parameter/alpha_scissor = 1.0
+shader_parameter/albedo = ExtResource("2_7ev0u")
+
+[sub_resource type="PrismMesh" id="PrismMesh_7tr0c"]
+material = SubResource("ShaderMaterial_20er4")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bciau"]
+data = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="block" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.58603, 0, 0, 0, 4.58603, 0, 0, 0, 4.58603, 0, 0, 0)
+cast_shadow = 0
+ignore_occlusion_culling = true
+mesh = SubResource("PrismMesh_7tr0c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(4.50178, 0, 0, 0, 4.50178, 0, 0, 0, 4.75147, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_bciau")

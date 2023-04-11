@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbcsukjp7mc4g"]
+
+[ext_resource type="PackedScene" uid="uid://i5aosotcioyt" path="res://node_3d.tscn" id="1_dg87x"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="2_c0388"]
+
+[node name="test_world" instance=ExtResource("1_dg87x")]
+
+[node name="bean" parent="." index="8"]
+transform = Transform3D(-0.159034, 0, -1.09819, 0, 1.86609, 0, 1.3542, 0, -0.128968, 41.3277, -9.03735, -11.1431)
+
+[node name="Camera3D" type="Camera3D" parent="." index="15"]
+transform = Transform3D(2.02256, 0, 0, 0, 2.02256, 0, 0, 0, 1.60417, 39.3503, -3.70802, -2.10153)
+script = ExtResource("2_c0388")
+
+[editable path="bean"]

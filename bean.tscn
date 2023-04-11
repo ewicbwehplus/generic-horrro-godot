@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5vn3kldow2vr"]
+
+[ext_resource type="Script" path="res://beanmovegobrrrrr.gd" id="1_ivlgv"]
+[ext_resource type="Material" uid="uid://bni0eo5gi5ho4" path="res://post_process/lcd-overlay_mat.tres" id="2_leep7"]
+[ext_resource type="Texture2D" uid="uid://bpf6dg1xx0lgw" path="res://20230407_173217.png" id="2_q07bf"]
+[ext_resource type="Script" path="res://RayCast3D.gd" id="5_r685j"]
+[ext_resource type="PackedScene" uid="uid://qggf6orhinhw" path="res://low-poly_walkie-talkie/walkietalkie.tscn" id="6_brcu2"]
+[ext_resource type="AudioStream" uid="uid://kutroxsne2nv" path="res://footsteps.mp3" id="6_ckguw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0m6ow"]
+material = ExtResource("2_leep7")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pixsf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l0rb6"]
+
+[node name="bean" type="CharacterBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_ivlgv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_0m6ow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_pixsf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(0.779006, 0, 0, 0, 1.11561, 0, 0, 0, 0.779006, 0, 0.896792, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+current = true
+
+[node name="Interact" type="Node3D" parent="Head/Camera3D"]
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D/Interact"]
+transform = Transform3D(1, 0, 0, 0, -0.0379898, -0.948463, 0, 11.5781, -0.00311207, -0.0363024, 0, -0.698038)
+exclude_parent = false
+script = ExtResource("5_r685j")
+
+[node name="Interact" type="Control" parent="Head/Camera3D/Interact/RayCast3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Head/Camera3D/Interact/RayCast3D/Interact"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 6.7875
+anchor_top = 6.675
+anchor_right = 6.7875
+anchor_bottom = 6.675
+offset_left = 8.5
+offset_top = -7.0
+offset_right = 69.5
+offset_bottom = 19.0
+grow_horizontal = 2
+text = "Interact
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head"]
+transform = Transform3D(1.28276, 0.00906946, -0.0478221, -0.0104373, 1.28312, -0.0366236, 0.0475423, 0.0369861, 1.28227, 0.0615043, -1.15602, -0.0419473)
+light_energy = 3.0
+light_indirect_energy = 10.0
+light_volumetric_fog_energy = 10.0
+light_projector = ExtResource("2_q07bf")
+light_size = 0.771
+light_specular = 10.17
+shadow_enabled = true
+spot_range = 10.1105
+
+[node name="scene" parent="Head" instance=ExtResource("6_brcu2")]
+transform = Transform3D(-0.0288955, 0, -0.0164206, 0, 0.0104748, 0, 0.0391369, 0, -0.0121236, 0.675549, -0.624236, -0.662897)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ckguw")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer3"]
+material = SubResource("ShaderMaterial_l0rb6")
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 41.0
+offset_bottom = 30.0
+scale = Vector2(16.3536, 14.7781)
+color = Color(1, 1, 1, 0)

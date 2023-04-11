@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://xwlhdqxh71go"]
+
+[ext_resource type="PackedScene" uid="uid://c30ayy5yngr7s" path="res://exports/SideWalk.glb" id="1_a87fs"]
+[ext_resource type="PackedScene" uid="uid://blfp1rvvme3dn" path="res://scene.gltf" id="2_kpc47"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0tarf"]
+data = PackedVector3Array(4, 0.1, 1, 0, 0.1, 0, 4, 0.1, 0, 4, 0.1, 1, 0, 0.1, 1, 0, 0.1, 0, 0, 0.1, 1, 4, 0, 1, 0, 0, 1, 0, 0.1, 1, 4, 0.1, 1, 4, 0, 1)
+
+[node name="SideWalk" instance=ExtResource("1_a87fs")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SideWalk2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SideWalk2/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_0tarf")
+
+[node name="scene" parent="." index="1" instance=ExtResource("2_kpc47")]

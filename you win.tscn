@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmgvcqwyujd7j"]
+
+[ext_resource type="AudioStream" uid="uid://bgrh8jde7p7hr" path="res://win theme.mp3" id="1_f1wpm"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 137.0
+offset_top = 142.0
+offset_right = 365.0
+offset_bottom = 246.0
+text = "Ending 2/2
+You said nah fuck it 
+and just get 
+out of there. Very wise choice"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_f1wpm")
+autoplay = true

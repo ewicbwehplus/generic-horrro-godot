@@ -1,0 +1,245 @@
+[gd_scene load_steps=32 format=3 uid="uid://i5aosotcioyt"]
+
+[ext_resource type="Script" path="res://node_3d.gd" id="1_gt2ki"]
+[ext_resource type="PackedScene" uid="uid://c5vn3kldow2vr" path="res://bean.tscn" id="2_j2jl1"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://joystick/virtual_joystick.tscn" id="3_8uras"]
+[ext_resource type="Script" path="res://blood.gd" id="6_byvr5"]
+[ext_resource type="AudioStream" uid="uid://cx3kge46bmk41" path="res://y2mate.com - FNAF 1 animatronic at the door sound effect.mp3" id="7_kfh3f"]
+[ext_resource type="Texture2D" uid="uid://4cqa44jnnpxs" path="res://c1e8d398-a760-4670-9ad7-1c092861006a.webp" id="9_af1p7"]
+[ext_resource type="Texture2D" uid="uid://cva3ft5nt266n" path="res://20230411_164024.png" id="10_hu2ga"]
+[ext_resource type="Texture2D" uid="uid://b08wn7u36vhbs" path="res://PlayerArms.png" id="11_yhsh1"]
+[ext_resource type="AudioStream" uid="uid://b2dtda3nyqhir" path="res://street-ambience-9269.mp3" id="14_e7ttd"]
+[ext_resource type="Script" path="res://StaticBody3D.gd" id="14_urgn2"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bfdgnseqcnpex" path="res://node_3d.occ" id="15_ei7rt"]
+[ext_resource type="PackedScene" uid="uid://dy61oxpqm2tx6" path="res://blood.tscn" id="15_koqoy"]
+[ext_resource type="PackedScene" uid="uid://buxdhcg8anaqm" path="res://gas_station/gasstation.tscn" id="15_x7v0l"]
+[ext_resource type="Script" path="res://f this shi5nim out.gd" id="16_iiuxk"]
+[ext_resource type="Script" path="res://StaticBody3D2.gd" id="16_oisue"]
+[ext_resource type="PackedScene" uid="uid://cqbr7t56ynhs0" path="res://teleblood.tscn" id="16_skkf0"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_m30yj"]
+panorama = ExtResource("9_af1p7")
+filter = false
+
+[sub_resource type="Sky" id="Sky_emeia"]
+sky_material = SubResource("PanoramaSkyMaterial_m30yj")
+process_mode = 2
+radiance_size = 6
+
+[sub_resource type="Environment" id="Environment_ux0xt"]
+background_mode = 2
+background_color = Color(0.682353, 0.454902, 0.027451, 1)
+background_energy_multiplier = 0.55
+background_intensity = 6.13
+sky = SubResource("Sky_emeia")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.0
+reflected_light_source = 2
+tonemap_white = 1.38
+glow_intensity = 0.04
+glow_strength = 2.0
+glow_bloom = 1.0
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 13.24
+glow_map_strength = 0.47
+fog_light_color = Color(0.270588, 0.219608, 0.2, 1)
+fog_light_energy = 1.58
+fog_sun_scatter = 2.35
+fog_density = 0.1037
+fog_height = -5.33
+fog_height_density = 0.0516
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ypmn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ywyeq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sctyh"]
+blend_mode = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vrqk5"]
+width = 10
+height = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlwuh"]
+atlas = ExtResource("11_yhsh1")
+region = Rect2(256, 256, 256, 256)
+margin = Rect2(0.312, 0, 0, 0)
+filter_clip = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bothv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wueld"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dvfq8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k5nd7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnpaf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mu1y1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uvdlc"]
+
+[node name="test_world" type="Node3D"]
+transform = Transform3D(0.494423, 0, 0, 0, 0.494423, 0, 0, 0, 0.623374, 0, -4.57427, 0)
+script = ExtResource("1_gt2ki")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_e7ttd")
+volume_db = -5.551
+pitch_scale = 0.86
+autoplay = true
+
+[node name="scene" parent="." instance=ExtResource("15_x7v0l")]
+transform = Transform3D(1.77524, 0, 0, 0, 1.77524, 0, 0, 0, 1.77524, 95.9872, -11.4995, -53.4697)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ux0xt")
+
+[node name="MeshInstance3D3" parent="." instance=ExtResource("15_koqoy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.71, -11.4921, -43.2175)
+script = ExtResource("6_byvr5")
+
+[node name="bruh" type="AudioStreamPlayer" parent="MeshInstance3D3"]
+stream = ExtResource("7_kfh3f")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D3"]
+transform = Transform3D(2.01247, 0, 0, 0, 2.01247, 0, 0, 0, 2.01247, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/Area3D"]
+transform = Transform3D(91.7923, 0, 0, 0, 2.20487, 0, 0, 0, 11.3663, 0, 0, 0)
+shape = SubResource("BoxShape3D_8ypmn")
+
+[node name="MeshInstance3D5" parent="." instance=ExtResource("15_koqoy")]
+transform = Transform3D(1.06586, 0, -1.08348, 0, 1.33818, 0, 0.553764, 0, 2.08544, 120.173, -11.417, -70.5994)
+
+[node name="MeshInstance3D4" parent="." instance=ExtResource("15_koqoy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.962, -11.0714, -46.7301)
+
+[node name="MeshInstance3D6@7373" type="Area3D" parent="."]
+transform = Transform3D(1257.41, 0, 0, 0, 81.0224, 2.38419e-07, 0, 5.96046e-08, 170.673, 1166.03, -40.3286, -41.0262)
+
+[node name="MeshInstance3D6@7373@CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(498.234, 0, 0, 0, 7533.43, 2.6226e-06, 0, 2.86102e-06, 261.143, 0, 0, 0)
+shape = SubResource("BoxShape3D_ywyeq")
+
+[node name="bean" parent="." instance=ExtResource("2_j2jl1")]
+transform = Transform3D(-0.159034, 0, -1.09819, 0, 1.86609, 0, 1.3542, 0, -0.128968, -34.7832, -9.03735, -11.1431)
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("3_8uras")]
+offset_left = -5.0
+offset_top = -145.0
+offset_right = 295.0
+offset_bottom = 155.0
+scale = Vector2(0.5, 0.5)
+
+[node name="CenterContainer" type="CenterContainer" parent="Virtual Joystick"]
+material = SubResource("CanvasItemMaterial_sctyh")
+layout_mode = 2
+offset_left = 606.0
+offset_top = -202.0
+offset_right = 646.0
+offset_bottom = -162.0
+
+[node name="TextureRect" type="TextureRect" parent="Virtual Joystick/CenterContainer"]
+layout_mode = 2
+texture = SubResource("NoiseTexture2D_vrqk5")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Virtual Joystick"]
+position = Vector2(1134, 84)
+texture_normal = ExtResource("10_hu2ga")
+action = "ui_accept"
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="Virtual Joystick"]
+texture_filter = 2
+position = Vector2(1036, -286)
+scale = Vector2(0.808305, 0.856484)
+texture_normal = SubResource("AtlasTexture_wlwuh")
+action = "left_mouse_click"
+
+[node name="Blood" parent="." instance=ExtResource("16_skkf0")]
+transform = Transform3D(5.14214, 0.0171751, -0.16886, -0.0820727, 1.10082, -0.0509878, 0.172402, 0.0117769, 5.01222, 130.999, -11.3778, -87.5635)
+
+[node name="Area3D2" type="Area3D" parent="Blood"]
+transform = Transform3D(97.9796, 1.11386e-06, 1.90735e-06, -3.1814e-06, 121.713, -9.53674e-07, -3.57628e-06, 5.96046e-07, 98.8177, -0.047226, -1.70796, 0.0198593)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blood/Area3D2"]
+transform = Transform3D(0.0101962, -6.78028e-10, 2.32831e-10, -3.57431e-10, 0.0404914, 4.65661e-10, 3.7835e-10, 1.52795e-10, 0.0271526, -0.0063529, 0.0190971, -4.05312e-05)
+shape = SubResource("BoxShape3D_bothv")
+
+[node name="StaticBody3D" type="Node3D" parent="."]
+transform = Transform3D(2.22525, 0, 0, 0, 2.77618, 0, 0, 0, 129.845, 107.117, 48.9107, 997.298)
+script = ExtResource("14_urgn2")
+
+[node name="Label" type="Label" parent="StaticBody3D"]
+visible = false
+offset_left = 273.0
+offset_top = 406.0
+offset_right = 334.0
+offset_bottom = 432.0
+text = "I just got here, i can't leave like that"
+
+[node name="69" type="Area3D" parent="StaticBody3D"]
+transform = Transform3D(-9577.29, 0, 0, 0, 7880.27, 0, 0, 0, 424.496, -150.715, -19.2048, -8.61663)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/69"]
+transform = Transform3D(-0.0160364, 0, 0, 0, 0.00835611, 0, 0, 0, 0.00835611, 0, 0, 0)
+shape = SubResource("BoxShape3D_wueld")
+
+[node name="f this shi5nim out" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250.241, -8.94283, -20.785)
+script = ExtResource("16_iiuxk")
+
+[node name="ienene" type="Area3D" parent="f this shi5nim out"]
+transform = Transform3D(1.79551, 0, 0, 0, 1, 0, 0, 0, 1, -58.1589, 11.8709, -15.7266)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="f this shi5nim out/ienene"]
+transform = Transform3D(-58.1397, 0, 0, 0, 96.9424, 0, 0, 0, 70.9457, 33.2083, -6.42782, 25.1452)
+shape = SubResource("BoxShape3D_dvfq8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="f this shi5nim out"]
+transform = Transform3D(45.7229, 0, 0, 0, 36.1842, 0, 0, 0, 43.0715, -30.1035, -8.35559, -16.4159)
+shape = SubResource("BoxShape3D_k5nd7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="f this shi5nim out"]
+transform = Transform3D(77.6245, 0, 0, 0, 412.503, 0, 0, 0, 1230.38, -547.175, -16.2823, -93.4876)
+collision_priority = 69.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="f this shi5nim out/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91866, -0.00156109, -0.00779875)
+shape = SubResource("BoxShape3D_qnpaf")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("15_ei7rt")
+bake_simplification_distance = 2.0
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." groups=["Pickable"]]
+transform = Transform3D(3.09207, 0, 0, 0, 3.09207, 0, 0, 0, 3.09207, 41.837, -8.65071, -11.1212)
+script = ExtResource("16_oisue")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="StaticBody3D2"]
+transform = Transform3D(0.653549, -0.000444386, 0.0271224, -0.0270883, 0.0237844, 0.653118, -0.00113412, -0.518459, 0.0188335, 0, 2.37925, 0)
+visible = false
+light_energy = 69.0
+spot_range = 5.885
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1.80216, 0, 0, 0, 1.81484, 0.00437611, 0, -0.0039277, 2.02203, 0.0427999, 0.11262, 0.192641)
+shape = SubResource("BoxShape3D_mu1y1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(1.01068, 0.33236, -0.0027778, 3.01595e-09, -0.00936556, -1.21432, -0.300415, 1.11816, -0.00934536, 0, -0.600503, 0)
+mesh = SubResource("CapsuleMesh_uvdlc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2/MeshInstance3D2"]
+transform = Transform3D(0.983595, -5.12718e-10, -0.292362, 0.264245, -0.00565922, 0.888992, -0.00203801, -0.677119, -0.00685644, 0.00433537, -0.0189208, -0.686458)
+mesh = SubResource("CapsuleMesh_uvdlc")
+skeleton = NodePath("../..")
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="MeshInstance3D3/bruh" to="MeshInstance3D3" method="_on_audio_stream_player_finished"]
+[connection signal="body_entered" from="MeshInstance3D3/Area3D" to="MeshInstance3D3" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Blood/Area3D2" to="Blood" method="_on_area_3d_2_body_entered"]
+[connection signal="body_entered" from="StaticBody3D/69" to="StaticBody3D" method="_on_69_body_entered"]
+[connection signal="body_exited" from="StaticBody3D/69" to="StaticBody3D" method="_on_69_body_exited"]
+[connection signal="body_entered" from="f this shi5nim out/ienene" to="f this shi5nim out" method="_on_ienene_body_entered"]

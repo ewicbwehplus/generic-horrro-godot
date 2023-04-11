@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://kc8anepwkfrn"
+path="res://.godot/imported/uploads_files_3494595_Milk_Carton_Packet_Container.obj-82fb60226a6080f63dc488f7c653665c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/uploads_files_3494595_Milk_Carton_Packet_Container.obj-82fb60226a6080f63dc488f7c653665c.mesh"]
+
+source_file="res://uploads_files_3494595_Milk_Carton_Packet_Container.obj"
+dest_files=["res://.godot/imported/uploads_files_3494595_Milk_Carton_Packet_Container.obj-82fb60226a6080f63dc488f7c653665c.mesh", "res://.godot/imported/uploads_files_3494595_Milk_Carton_Packet_Container.obj-82fb60226a6080f63dc488f7c653665c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

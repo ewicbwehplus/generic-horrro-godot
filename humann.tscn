@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbljrmvslsbgj"]
+
+[ext_resource type="Shader" path="res://bean.gdshader" id="1_hlove"]
+[ext_resource type="Texture2D" uid="uid://lufj4mq3sag7" path="res://icon.png" id="2_1q8oh"]
+[ext_resource type="ArrayMesh" uid="uid://db7lrjhnnl2xa" path="res://uploads_files_2087304_Basemesh.obj" id="3_2u5nv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2d5ig"]
+render_priority = 0
+shader = ExtResource("1_hlove")
+shader_parameter/jitter = 0.767
+shader_parameter/jitter_z_coordinate = true
+shader_parameter/jitter_depth_independent = true
+shader_parameter/affine_texture_mapping = true
+shader_parameter/alpha_scissor = 1.0
+shader_parameter/albedo = ExtResource("2_1q8oh")
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(0.0067349, 0, 0, 0, 0.0067349, 0, 0, 0, 0.0067349, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_2d5ig")
+mesh = ExtResource("3_2u5nv")

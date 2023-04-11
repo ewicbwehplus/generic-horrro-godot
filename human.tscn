@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://s83t12wxpfhb"]
+
+[ext_resource type="Shader" path="res://bean.gdshader" id="1_4012t"]
+[ext_resource type="Texture2D" uid="uid://by5obqo4noqug" path="res://PSX_NIGHTSKY_PREview.jpg" id="2_xdra3"]
+[ext_resource type="ArrayMesh" uid="uid://db7lrjhnnl2xa" path="res://uploads_files_2087304_Basemesh.obj" id="3_6nb0a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5thtp"]
+render_priority = 19
+shader = ExtResource("1_4012t")
+shader_parameter/jitter = 0.768
+shader_parameter/jitter_z_coordinate = true
+shader_parameter/jitter_depth_independent = true
+shader_parameter/affine_texture_mapping = true
+shader_parameter/alpha_scissor = 0.449
+shader_parameter/albedo = ExtResource("2_xdra3")
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(0.00562928, 0.00365457, 0.000560457, -0.00348532, 0.0049045, 0.00302611, 0.00123392, -0.00281937, 0.00599061, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_5thtp")
+mesh = ExtResource("3_6nb0a")

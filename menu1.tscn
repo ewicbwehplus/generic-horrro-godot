@@ -1,0 +1,210 @@
+[gd_scene load_steps=23 format=3 uid="uid://dwjwam3ix32cd"]
+
+[ext_resource type="Script" path="res://menu1.gd" id="1_f2tv5"]
+[ext_resource type="AudioStream" uid="uid://b2dtda3nyqhir" path="res://street-ambience-9269.mp3" id="3_v1kdv"]
+[ext_resource type="PackedScene" uid="uid://buxdhcg8anaqm" path="res://gas_station/gasstation.tscn" id="4_mjoec"]
+[ext_resource type="Texture2D" uid="uid://4cqa44jnnpxs" path="res://c1e8d398-a760-4670-9ad7-1c092861006a.webp" id="5_nuhss"]
+[ext_resource type="PackedScene" uid="uid://dy61oxpqm2tx6" path="res://blood.tscn" id="6_ydg7e"]
+[ext_resource type="PackedScene" uid="uid://cqbr7t56ynhs0" path="res://teleblood.tscn" id="11_j6y75"]
+[ext_resource type="Script" path="res://StaticBody3D.gd" id="12_1kmel"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="13_5qbgd"]
+[ext_resource type="Script" path="res://f this shi5nim out.gd" id="13_xjhyl"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bfdgnseqcnpex" path="res://node_3d.occ" id="14_mgl0s"]
+[ext_resource type="Script" path="res://StaticBody3D2.gd" id="15_ga5bc"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_m30yj"]
+panorama = ExtResource("5_nuhss")
+filter = false
+
+[sub_resource type="Sky" id="Sky_emeia"]
+sky_material = SubResource("PanoramaSkyMaterial_m30yj")
+process_mode = 2
+radiance_size = 6
+
+[sub_resource type="Environment" id="Environment_ux0xt"]
+background_mode = 2
+background_color = Color(0.682353, 0.454902, 0.027451, 1)
+background_energy_multiplier = 0.55
+background_intensity = 6.13
+sky = SubResource("Sky_emeia")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.0
+reflected_light_source = 2
+tonemap_white = 1.38
+glow_intensity = 0.04
+glow_strength = 2.0
+glow_bloom = 1.0
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 13.24
+glow_map_strength = 0.47
+fog_light_color = Color(0.270588, 0.219608, 0.2, 1)
+fog_light_energy = 1.58
+fog_sun_scatter = 2.35
+fog_density = 0.1037
+fog_height = -5.33
+fog_height_density = 0.0516
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ywyeq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bothv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wueld"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dvfq8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k5nd7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnpaf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mu1y1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uvdlc"]
+
+[node name="test_world" type="Node3D"]
+transform = Transform3D(0.494423, 0, 0, 0, 0.494423, 0, 0, 0, 0.623374, 0, -4.57427, 0)
+script = ExtResource("1_f2tv5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v1kdv")
+volume_db = -5.551
+pitch_scale = 0.86
+autoplay = true
+
+[node name="scene" parent="." instance=ExtResource("4_mjoec")]
+transform = Transform3D(1.77524, 0, 0, 0, 1.77524, 0, 0, 0, 1.77524, 95.9872, -11.4995, -53.4697)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ux0xt")
+
+[node name="MeshInstance3D3" parent="." instance=ExtResource("6_ydg7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.71, -11.4921, -43.2175)
+
+[node name="MeshInstance3D5" parent="." instance=ExtResource("6_ydg7e")]
+transform = Transform3D(1.06586, 0, -1.08348, 0, 1.33818, 0, 0.553764, 0, 2.08544, 120.173, -11.417, -70.5994)
+
+[node name="MeshInstance3D4" parent="." instance=ExtResource("6_ydg7e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.962, -11.0714, -46.7301)
+
+[node name="MeshInstance3D6@7373" type="Area3D" parent="."]
+transform = Transform3D(1257.41, 0, 0, 0, 81.0224, 2.38419e-07, 0, 5.96046e-08, 170.673, 1166.03, -40.3286, -41.0262)
+
+[node name="MeshInstance3D6@7373@CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(498.234, 0, 0, 0, 7533.43, 2.6226e-06, 0, 2.86102e-06, 261.143, 0, 0, 0)
+shape = SubResource("BoxShape3D_ywyeq")
+
+[node name="MeshInstance3D6@AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Blood" parent="." instance=ExtResource("11_j6y75")]
+transform = Transform3D(5.14214, 0.0171751, -0.16886, -0.0820727, 1.10082, -0.0509878, 0.172402, 0.0117769, 5.01222, 130.999, -11.3778, -87.5635)
+
+[node name="Area3D2" type="Area3D" parent="Blood"]
+transform = Transform3D(97.9796, 1.11386e-06, 1.90735e-06, -3.1814e-06, 121.713, -9.53674e-07, -3.57628e-06, 5.96046e-07, 98.8177, -0.047226, -1.70796, 0.0198593)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blood/Area3D2"]
+transform = Transform3D(0.0101962, -6.78028e-10, 2.32831e-10, -3.57431e-10, 0.0404914, 4.65661e-10, 3.7835e-10, 1.52795e-10, 0.0271526, -0.0063529, 0.0190971, -4.05312e-05)
+shape = SubResource("BoxShape3D_bothv")
+
+[node name="StaticBody3D" type="Node3D" parent="."]
+transform = Transform3D(2.22525, 0, 0, 0, 2.77618, 0, 0, 0, 129.845, 107.117, 48.9107, 997.298)
+script = ExtResource("12_1kmel")
+
+[node name="Label" type="Label" parent="StaticBody3D"]
+visible = false
+offset_left = 273.0
+offset_top = 406.0
+offset_right = 334.0
+offset_bottom = 432.0
+text = "I just got here, i can't leave like that"
+
+[node name="69" type="Area3D" parent="StaticBody3D"]
+transform = Transform3D(-9577.29, 0, 0, 0, 7880.27, 0, 0, 0, 424.496, -150.715, -19.2048, -8.61663)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/69"]
+transform = Transform3D(-0.0160364, 0, 0, 0, 0.00835611, 0, 0, 0, 0.00835611, 0, 0, 0)
+shape = SubResource("BoxShape3D_wueld")
+
+[node name="f this shi5nim out" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 250.241, -8.94283, -20.785)
+script = ExtResource("13_xjhyl")
+
+[node name="ienene" type="Area3D" parent="f this shi5nim out"]
+transform = Transform3D(1.79551, 0, 0, 0, 1, 0, 0, 0, 1, -58.1589, 11.8709, -15.7266)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="f this shi5nim out/ienene"]
+transform = Transform3D(-58.1397, 0, 0, 0, 96.9424, 0, 0, 0, 70.9457, 33.2083, -6.42782, 25.1452)
+shape = SubResource("BoxShape3D_dvfq8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="f this shi5nim out"]
+transform = Transform3D(45.7229, 0, 0, 0, 36.1842, 0, 0, 0, 43.0715, -30.1035, -8.35559, -16.4159)
+shape = SubResource("BoxShape3D_k5nd7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="f this shi5nim out"]
+transform = Transform3D(77.6245, 0, 0, 0, 412.503, 0, 0, 0, 1230.38, -547.175, -16.2823, -93.4876)
+collision_priority = 69.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="f this shi5nim out/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91866, -0.00156109, -0.00779875)
+shape = SubResource("BoxShape3D_qnpaf")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("14_mgl0s")
+bake_simplification_distance = 2.0
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." groups=["Pickable"]]
+transform = Transform3D(3.09207, 0, 0, 0, 3.09207, 0, 0, 0, 3.09207, 41.837, -8.65071, -11.1212)
+script = ExtResource("15_ga5bc")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="StaticBody3D2"]
+transform = Transform3D(0.653549, -0.000444386, 0.0271224, -0.0270883, 0.0237844, 0.653118, -0.00113412, -0.518459, 0.0188335, 0, 2.37925, 0)
+visible = false
+light_energy = 69.0
+spot_range = 5.885
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.062, -0.162)
+shape = SubResource("BoxShape3D_mu1y1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(1.01068, 0.33236, -0.0027778, 3.01595e-09, -0.00936556, -1.21432, -0.300415, 1.11816, -0.00934536, 0, -0.600503, 0)
+mesh = SubResource("CapsuleMesh_uvdlc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2/MeshInstance3D2"]
+transform = Transform3D(0.983595, -5.12718e-10, -0.292362, 0.264245, -0.00565922, 0.888992, -0.00203801, -0.677119, -0.00685644, 0.00433537, -0.0189208, -0.686458)
+mesh = SubResource("CapsuleMesh_uvdlc")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(2.02198, -0.0483731, -1.29795e-05, 0.0483731, 2.02198, -0.000510158, 1.9969e-05, 0.000404265, 1.60417, 54.233, -5.51708, -3.51104)
+script = ExtResource("13_5qbgd")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 97.0
+offset_top = 267.0
+offset_right = 138.0
+offset_bottom = 298.0
+text = "Play"
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_left = -86.0
+offset_top = -167.0
+offset_right = 85.0
+offset_bottom = -141.0
+scale = Vector2(2.43444, 3.68423)
+text = "Untittled horror game"
+
+[node name="Label2" type="Label" parent="Button"]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 163.0
+offset_right = 537.0
+offset_bottom = 189.0
+text = "joke game by ericbruh
+"
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="body_entered" from="Blood/Area3D2" to="Blood" method="_on_area_3d_2_body_entered"]
+[connection signal="body_entered" from="StaticBody3D/69" to="StaticBody3D" method="_on_69_body_entered"]
+[connection signal="body_exited" from="StaticBody3D/69" to="StaticBody3D" method="_on_69_body_exited"]
+[connection signal="body_entered" from="f this shi5nim out/ienene" to="f this shi5nim out" method="_on_ienene_body_entered"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://3idq6px0ehh5"]
+
+[ext_resource type="Script" path="res://penis.gd" id="1_esa5r"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qjrfw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_stqsa"]
+
+[node name="penis" type="StaticBody3D"]
+script = ExtResource("1_esa5r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.16355, 0, 0, 0, 1.10059, 0, 0, 0, 1.09768, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_qjrfw")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.965146, 0.261688, -0.0034115, -0.0103957, 0.0253093, -0.999626, -0.261504, 0.964821, 0.0271476, 0, -0.576303, 0)
+shape = SubResource("CapsuleShape3D_stqsa")
+
+[node name="bruh" type="Label" parent="."]
+visible = false
+offset_left = 349.0
+offset_top = 255.0
+offset_right = 389.0
+offset_bottom = 278.0
+text = "plz help meeeeeee"
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(367.992, 0, 0, 0, 341.889, 0, 0, 0, 426.232, 0, 0, 0)
+priority = 69.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(7.39202, 0, 0, 0, 1.90103, 0, 0, 0, 8.40766, 0, 0, 0)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

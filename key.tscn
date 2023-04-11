@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckbxyu755d5vu"]
+
+[ext_resource type="ArrayMesh" uid="uid://bdhngbl8sn4x1" path="res://Key.obj" id="1_8elib"]
+[ext_resource type="Script" path="res://key.gd" id="2_heo17"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_51i6e"]
+
+[node name="Bruh" type="Node3D"]
+script = ExtResource("2_heo17")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 234.0
+offset_top = 204.0
+offset_right = 390.0
+offset_bottom = 230.0
+text = "Press LMB to pickup
+"
+
+[node name="Node3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_8elib")
+
+[node name="Area3D" type="Area3D" parent="Node3D"]
+transform = Transform3D(42.7273, 0, 0, 0, 5.55905, 0, 0, 0, 11.3039, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D"]
+shape = SubResource("BoxShape3D_51i6e")
+
+[connection signal="body_entered" from="Node3D/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Node3D/Area3D" to="." method="_on_area_3d_body_exited"]

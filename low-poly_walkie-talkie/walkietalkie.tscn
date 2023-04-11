@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://qggf6orhinhw"]
+
+[ext_resource type="PackedScene" uid="uid://f6kesu4hk8h8" path="res://low-poly_walkie-talkie/scene.gltf" id="1_ppkvs"]
+[ext_resource type="AudioStream" uid="uid://byh61naecxl1t" path="res://radio-test-73691.mp3" id="2_fbmf1"]
+[ext_resource type="Script" path="res://low-poly_walkie-talkie/walkietalkie.gd" id="2_soo3q"]
+
+[node name="scene" instance=ExtResource("1_ppkvs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0117095, 0, 0)
+script = ExtResource("2_soo3q")
+
+[node name="Cube019_walkie_0" parent="Sketchfab_model/7f683f3441e6403d91bc8c481b595afffbx/RootNode/Cube019" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23588.1, -924.246, -2417.48)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource("2_fbmf1")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
