@@ -16,10 +16,6 @@ config/features=PackedStringArray("4.0", "Forward Plus")
 run/low_processor_mode=true
 boot_splash/minimum_display_time=3
 
-[autoload]
-
-Settings="*res://Global/Settings.gd"
-
 [display]
 
 window/size/viewport_width=640
