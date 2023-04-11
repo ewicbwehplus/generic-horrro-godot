@@ -14,8 +14,8 @@ jobs:
     steps:
       - uses: actions/setup-java@v3
         with:
-        distribution: 'temurin' # See 'Supported distributions' for available options
-        java-version: '17'
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '17'
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v2
